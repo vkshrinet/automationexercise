@@ -1,15 +1,21 @@
 package day24;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FirstAutomationTest {
 	public static void main(String[] args) {
 	WebDriver driver=new ChromeDriver();
 	driver.get("https://automationexercise.com/");
 	driver.manage().window().maximize();
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	wait.until(ExpectedConditions.titleIs("Automation Exercise"));
 	String expectedTitle = "Automation Exercise";
 	String actualTitle = driver.getTitle();
 		if (actualTitle.contains(expectedTitle)) {
